@@ -1,0 +1,43 @@
+{
+  "name": "react-native-press-outside-listener",
+  "title": "React Native Press Outside Listener",
+  "version": "1.0.1",
+  "description": "Press outside listener hook for React Native.",
+  "main": "index.js",
+  "files": [
+    "README.md",
+    "android",
+    "index.js",
+    "pressOutsideContext.js",
+    "util.js",
+    "ios",
+    "react-native-press-outside-listener.podspec"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kyi-Moe-Min/RNPressOutsideListener.git"
+  },
+  "keywords": [
+    "press-outside",
+    "rn-press-outside",
+    "press-outside-listener"
+  ],
+  "author": {
+    "name": "Kyi Moe Min",
+    "email": "kyimoemin0@gmail.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "react": "^16.9.0",
+    "react-native": "^0.61.5"
+  }
+}
