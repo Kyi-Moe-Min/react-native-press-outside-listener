@@ -4,8 +4,6 @@
 
 press outside listener for react-native
 
----
-
 ## Installation
 
 ```npm
@@ -14,12 +12,12 @@ press outside listener for react-native
 
 ## Example
 
-2. Add `PressOutsideProvider` to root component of the project
+1. Add `PressOutsideProvider` to root component of the project
 
 App.jsx
 
 ```jsx
-import {PressOutsideProvider} from 'react-native-press-outside-listener';
+import { PressOutsideProvider } from "react-native-press-outside-listener";
 
 export default function App() {
   return (
@@ -35,9 +33,9 @@ export default function App() {
 Component.jsx
 
 ```jsx
-import {useEffect, useRef} from 'react';
-import {Text, View} from 'react-native';
-import {usePressOutsideListener} from 'react-native-press-outside-listener';
+import { useEffect, useRef } from "react";
+import { Text, View } from "react-native";
+import { usePressOutsideListener } from "react-native-press-outside-listener";
 
 export function Component() {
   const ref = useRef();
@@ -58,16 +56,16 @@ export function Component() {
   }, []);
 
   function pressOutside() {
-    console.log('press outside of the given component.');
+    console.log("press outside of the given component.");
   }
 
   function pressOutside2() {
-    console.log('press outside 2nd listener is called');
+    console.log("press outside 2nd listener is called");
   }
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text ref={ref} style={{borderWidth: 1, padding: 10}}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text ref={ref} style={{ borderWidth: 1, padding: 10 }}>
         press outside listener component
       </Text>
     </View>
