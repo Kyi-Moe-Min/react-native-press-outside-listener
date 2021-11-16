@@ -73,6 +73,25 @@ export function Component() {
 }
 ```
 
+ To be able to use changes state in listener. add a listener as following.
+
+ ```jsx
+  const addListener = usePressOutsideListener(ref);
+  const [state,setState] = useState(false);
+  ...
+
+  const listener = useCallback(()=>{
+    console.log("listener triggered",state);
+  },[state]);
+
+  useEffect(()=>{
+    const removeListener = addListener(listener);
+    // * do not forget to return removeListener
+    return ()=>removeListener();
+  },[state])
+
+ ```
+
 ## API
 
 ### Component

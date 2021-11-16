@@ -1,12 +1,12 @@
-import React from 'react';
-import {Pressable} from 'react-native';
-import {isElementIncludedInParent} from './util';
+import React from "react";
+import { Pressable } from "react-native";
+import { isElementIncludedInParent } from "./util";
 
-const {createContext, useContext, useRef} = require('react');
+const { createContext, useContext, useRef } = require("react");
 
 const pressOutsideContext = createContext({
   useAddListener(ref) {
-    return listener => () => {};
+    return (listener) => () => {};
   },
 });
 
@@ -18,7 +18,7 @@ const pressOutsideContext = createContext({
  * }} param0
  * @returns
  */
-export function PressOutsideProvider({children, style}) {
+export function PressOutsideProvider({ children, style }) {
   /**
    * @type {import('react').MutableRefObject<{
    * elementRef:import('react').MutableRefObject<any>,
@@ -31,10 +31,10 @@ export function PressOutsideProvider({children, style}) {
    * @param {import('react-native').GestureResponderEvent} e
    */
   function onTouch(e) {
-    refs.current.forEach(ref => {
+    refs.current.forEach((ref) => {
       // @ts-ignore
       if (!isElementIncludedInParent(e.target, ref.elementRef.current))
-        ref.listeners.forEach(callback => callback());
+        ref.listeners.forEach((callback) => callback());
     });
   }
 
@@ -44,9 +44,9 @@ export function PressOutsideProvider({children, style}) {
    * @returns add listener function
    */
   function addRef(ref) {
-    if (!refs.current.find(r => r.elementRef === ref))
-      refs.current.push({elementRef: ref, listeners: []});
-    return listener => addListener(listener, ref);
+    if (!refs.current.find((r) => r.elementRef === ref))
+      refs.current.push({ elementRef: ref, listeners: [] });
+    return (listener) => addListener(listener, ref);
   }
 
   /**
@@ -56,7 +56,9 @@ export function PressOutsideProvider({children, style}) {
    * @returns remove listener function
    */
   function addListener(listener, ref) {
-    refs.current.find(r => r?.elementRef === ref).listeners.push(listener);
+    const existingRef = refs.current.find((r) => r?.elementRef === ref);
+    if (!existingRef) return addRef(ref)(listener);
+    existingRef.listeners.push(listener);
     return () => removeListener(listener, ref);
   }
 
@@ -67,14 +69,14 @@ export function PressOutsideProvider({children, style}) {
    * @returns
    */
   function removeListener(listener, ref) {
-    const refIndex = refs.current.findIndex(r => r.elementRef === ref);
+    const refIndex = refs.current.findIndex((r) => r.elementRef === ref);
     if (refIndex === -1) return;
 
     if (refs.current[refIndex].listeners.length <= 1) {
       refs.current.splice(refIndex, 1);
     } else {
       const listeners = refs.current[refIndex].listeners;
-      const listenerIndex = listeners.findIndex(l => l === listener);
+      const listenerIndex = listeners.findIndex((l) => l === listener);
       if (listenerIndex !== -1) listeners.splice(listenerIndex, 1);
     }
   }
@@ -83,8 +85,9 @@ export function PressOutsideProvider({children, style}) {
     <pressOutsideContext.Provider
       value={{
         useAddListener: addRef,
-      }}>
-      <Pressable style={[{flex: 1}, style]} onTouchStart={onTouch}>
+      }}
+    >
+      <Pressable style={[{ flex: 1 }, style]} onTouchStart={onTouch}>
         {children}
       </Pressable>
     </pressOutsideContext.Provider>
@@ -95,5 +98,5 @@ export function PressOutsideProvider({children, style}) {
  * @param {import('react').MutableRefObject} ref
  * @returns
  */
-export const usePressOutsideListener = ref =>
+export const usePressOutsideListener = (ref) =>
   useContext(pressOutsideContext).useAddListener(ref);

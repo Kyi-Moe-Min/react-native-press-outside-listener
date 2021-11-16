@@ -1,12 +1,12 @@
 // main index.js
 
-import { requireNativeComponent } from "react-native";
+// import { requireNativeComponent } from "react-native";
 
-const PressOutsideListener = requireNativeComponent(
-  "PressOutsideListener",
-  // @ts-ignore
-  null
-);
+// const PressOutsideListener = requireNativeComponent(
+//   "PressOutsideListener",
+//   // @ts-ignore
+//   null
+// );
 
 export * from "./pressOutsideContext";
-export default PressOutsideListener;
+// export default PressOutsideListener;
