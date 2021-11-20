@@ -1,13 +1,16 @@
+import { Component } from "react";
+import { findNodeHandle } from "react-native";
+
 /**
  *
- * @param {Element&{_nativeTag:any,_children:any}} elementToCheck
- * @param {Element&{_nativeTag:any,_children:any}} parentElement
+ * @param {Component} elementToCheck
+ * @param {Component} parentElement
  */
 export function isElementIncludedInParent(elementToCheck, parentElement) {
-  if (elementToCheck._nativeTag === parentElement?._nativeTag) return true;
+  if (findNodeHandle(elementToCheck) === findNodeHandle(parentElement))
+    return true;
   if (!parentElement?._children) return false;
   for (const child of parentElement._children) {
-    if (child?._nativeTag === elementToCheck._nativeTag) return true;
     if (isElementIncludedInParent(elementToCheck, child)) return true;
   }
   return false;

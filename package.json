@@ -1,7 +1,7 @@
 {
   "name": "react-native-press-outside-listener",
   "title": "React Native Press Outside Listener",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Press outside listener hook for React Native.",
   "main": "index.js",
   "files": [
@@ -20,7 +20,11 @@
     "type": "git",
     "url": "https://github.com/Kyi-Moe-Min/react-native-press-outside-listener"
   },
-  "keywords": ["press-outside", "rn-press-outside", "press-outside-listener"],
+  "keywords": [
+    "press-outside",
+    "rn-press-outside",
+    "press-outside-listener"
+  ],
   "author": {
     "name": "Kyi Moe Min",
     "email": "kyimoemin0@gmail.com"
