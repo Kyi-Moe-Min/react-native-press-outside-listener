@@ -1,5 +1,9 @@
 # react-native-press-outside-listener
 
+## Caution !!!
+
+This library cause unscrollable ScrollView if don't touch Pressable Component. It can be fix by doing [this](https://stackoverflow.com/a/67028240/9043798) way.
+
 ## Description
 
 press outside listener for react-native
